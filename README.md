@@ -222,3 +222,10 @@ All endpoints under `/api/` — same responses as the original Flask app.
 | `send_from_directory(UPLOAD_FOLDER)` | Apache serves `static/uploads/` directly |
 | `secure_filename()` | `preg_replace()` sanitize + timestamp prefix |
 | All JSON `jsonify()` | `json_out()` helper in `config.php` |
+
+
+
+
+http://localhost:8080/1st_time_runners/admin.php
+
+http://localhost:8080/1st_time_runners/
