@@ -132,7 +132,7 @@ If you get **404 errors on /api/*** routes, check:
 
 | Role | Username/Phone | Password |
 |------|---------------|----------|
-| Admin | `admin` | `runners2025` |
+| Admin | `admin` | `configured via environment` |
 | Runner (after approval) | Their phone number | PIN they set during registration |
 
 ---
