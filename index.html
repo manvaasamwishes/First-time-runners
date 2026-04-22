@@ -1,0 +1,3116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1st Time Runners | Start Your Running Journey</title>
+  <link rel="icon" type="image/png" href="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/mnl4qXJMPGCpGwE7/1st-time-runners-logo-AzGM3vGWe6hWyqDg.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0F172A;
+      --bg2: #0A101F;
+      --bg3: #1E293B;
+      --accent: #22C55E;
+      --accent2: #06B6D4;
+      --gold: #F59E0B;
+      --pink: #EC4899;
+      --orange: #F97316;
+      --text: #F8FAFC;
+      --muted: #94A3B8;
+      --card: #1E293B;
+      --border: #334155;
+      --radius: 12px;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Syne', sans-serif;
+      --font-read: 'DM Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden
+    }
+
+    .page {
+      display: none;
+      min-height: 100vh
+    }
+
+    .page.active {
+      display: block
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 2px
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .4
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(15, 23, 42, .92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all .3s
+    }
+
+    nav.scrolled {
+      padding: 10px 40px
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none
+    }
+
+    .nav-logo img {
+      height: 48px;
+      padding: 4px;
+      background: #fff;
+      width: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--text)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all .3s;
+      cursor: pointer;
+      border: 1px solid transparent
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: var(--bg3);
+      border-color: var(--border)
+    }
+
+    .nav-links a.nav-join {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent)
+    }
+
+    .nav-links a.nav-join:hover {
+      background: var(--accent2)
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px
+    }
+
+    .nav-hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .3s
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px
+    }
+
+    .mobile-menu.open {
+      display: flex
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 36px;
+      letter-spacing: 4px;
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color .3s
+    }
+
+    .mobile-menu a:hover {
+      color: var(--accent)
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 32px;
+      cursor: pointer;
+      color: var(--muted)
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.07.34-mp84qB2JXVforDgX.jpeg') center/cover no-repeat
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 20%, rgba(34, 197, 94, 0.15) 50%, rgba(6, 182, 212, 0.1) 80%, rgba(236, 72, 153, 0.05) 100%)
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 140px 60px 80px
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 197, 94, .15);
+      border: 1px solid rgba(34, 197, 94, .4);
+      color: var(--accent2);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 40px;
+      margin-bottom: 28px
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: blink 1.5s infinite
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 8vw, 110px);
+      line-height: .95;
+      letter-spacing: 3px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 28px
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+      display: block
+    }
+
+    .hero-quote {
+      font-family: var(--font-read);
+      font-size: 16px;
+      color: rgba(240, 240, 240, .6);
+      font-style: italic;
+      margin-bottom: 40px;
+      max-width: 480px;
+      line-height: 1.7;
+      border-left: 2px solid var(--accent);
+      padding-left: 16px
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .3s;
+      border: none
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(34, 197, 94, .4)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid rgba(240, 240, 240, .3)
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text);
+      transform: translateY(-2px)
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #000
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255, 215, 0, .3)
+    }
+
+    .btn-sm {
+      padding: 10px 22px;
+      font-size: 12px
+    }
+
+    .btn-danger {
+      background: rgba(229, 62, 62, .1);
+      border: 1px solid rgba(229, 62, 62, .3);
+      color: #e53e3e
+    }
+
+    .btn-danger:hover {
+      background: rgba(229, 62, 62, .2)
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      z-index: 2;
+      display: flex;
+      gap: 24px;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 24px 32px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-stat {
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+    }
+
+    .hero-stat:nth-child(2) .hero-stat-num {
+      color: var(--accent2);
+      text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+    }
+
+    .hero-stat:nth-child(3) .hero-stat-num {
+      color: var(--pink);
+      text-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+    }
+
+    .hero-stat-lbl {
+      font-size: 10px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      margin-top: 8px;
+      font-weight: 700;
+      opacity: 0.8;
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--pink), var(--orange), var(--accent));
+      background-size: 200% auto;
+      animation: streak 15s linear infinite;
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap
+    }
+
+    @keyframes streak {
+      0% {
+        background-position: 0% center;
+      }
+
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 25s linear infinite
+    }
+
+    .marquee-track span {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 4px;
+      color: #fff;
+      margin: 0 40px
+    }
+
+    .marquee-track span.dot {
+      color: rgba(255, 255, 255, .5);
+      font-size: 10px;
+      vertical-align: middle
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 60px
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent)
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 72px);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 20px
+    }
+
+    .section-sub {
+      font-family: var(--font-read);
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7
+    }
+
+    /* STATS BAND */
+    .stats-band {
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      text-align: center
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 64px;
+      color: var(--accent);
+      text-shadow: 0 0 20px rgba(34, 197, 94, .3)
+    }
+
+    .stat-item .lbl {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: -8px
+    }
+
+    /* COMMUNITY HEAD */
+    .community-head {
+      background: linear-gradient(135deg, var(--bg2) 0%, rgba(34, 197, 94, .08) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      align-items: center;
+      margin: 0 60px 100px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .community-head::before {
+      content: 'FOUNDER';
+      position: absolute;
+      right: 20px;
+      top: 50px;
+      font-family: var(--font-display);
+      font-size: 120px;
+      color: rgba(34, 197, 94, .05);
+      letter-spacing: 10px;
+      pointer-events: none
+    }
+
+    .ch-img {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px solid var(--accent)
+    }
+
+    .ch-img img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block
+    }
+
+    .ch-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, .9);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 10px 16px;
+      text-align: center;
+      backdrop-filter: blur(10px)
+    }
+
+    .ch-badge-title {
+      font-size: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px
+    }
+
+    .ch-badge-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 2px
+    }
+
+    .ch-info .role {
+      display: inline-block;
+      background: rgba(34, 197, 94, .15);
+      border: 1px solid rgba(34, 197, 94, .3);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 40px;
+      margin-bottom: 20px
+    }
+
+    .ch-info h2 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      letter-spacing: 3px;
+      margin-bottom: 8px
+    }
+
+    .ch-info .years {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px
+    }
+
+    .ch-info p {
+      font-family: var(--font-read);
+      font-size: 16px;
+      color: rgba(240, 240, 240, .75);
+      line-height: 1.8;
+      margin-bottom: 20px
+    }
+
+    .ch-eco {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 180, 0, .1);
+      border: 1px solid rgba(0, 180, 0, .3);
+      border-radius: 10px;
+      padding: 12px 20px;
+      color: #4caf50;
+      font-size: 13px;
+      font-weight: 600
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all .4s;
+      position: relative;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .service-card:nth-child(2)::after {
+      background: var(--accent2);
+    }
+
+    .service-card:nth-child(3)::after {
+      background: var(--pink);
+    }
+
+    .service-card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3)
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s
+    }
+
+    .service-card:hover img {
+      transform: scale(1.05)
+    }
+
+    .service-card-body {
+      padding: 28px
+    }
+
+    .service-card-body h3 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: 2px;
+      margin-bottom: 10px
+    }
+
+    .service-card-body p {
+      font-family: var(--font-read);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7
+    }
+
+    /* EVENTS */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      margin-top: 40px
+    }
+
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      border-radius: 2px 0 0 2px
+    }
+
+    .event-card:hover {
+      border-color: rgba(34, 197, 94, .4);
+      transform: translateX(4px)
+    }
+
+    .event-card .ev-date {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin-bottom: 10px
+    }
+
+    .event-card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      line-height: 1.1
+    }
+
+    .event-card .ev-venue {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px
+    }
+
+    .event-card .ev-dist {
+      font-size: 12px;
+      color: rgba(240, 240, 240, .6);
+      margin-bottom: 18px;
+      line-height: 1.6
+    }
+
+    .event-card .ev-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .tag-our {
+      background: rgba(34, 197, 94, .15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .tag-ext {
+      background: rgba(6, 182, 212, .1);
+      border: 1px solid var(--accent2);
+      color: var(--accent2);
+    }
+
+    .btn-completed {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .tag-verified {
+      background: rgba(0, 255, 100, .08);
+      border-color: rgba(0, 255, 100, .25);
+      color: #4caf50
+    }
+
+    .tag-gold {
+      background: rgba(255, 215, 0, .1);
+      border-color: rgba(255, 215, 0, .3);
+      color: var(--gold)
+    }
+
+    .event-filter {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px
+    }
+
+    .filter-btn {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all .3s
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+      columns: 4 250px;
+      gap: 16px;
+      margin-top: 60px
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      transition: transform .5s
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05)
+    }
+
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(34, 197, 94, .0);
+      transition: background .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .gallery-item:hover .overlay {
+      background: rgba(34, 197, 94, .25)
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .95);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center
+    }
+
+    .lightbox.open {
+      display: flex
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 36px;
+      cursor: pointer;
+      color: #fff;
+      opacity: .7
+    }
+
+    .lightbox-close:hover {
+      opacity: 1
+    }
+
+    /* LEADERBOARD */
+    .leader-header {
+      display: grid;
+      grid-template-columns: 60px 1fr 240px 140px;
+      gap: 16px;
+      padding: 12px 24px;
+      background: var(--bg3);
+      border-radius: 10px 10px 0 0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .leader-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 240px 140px;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--card);
+      transition: background .3s;
+      align-items: center
+    }
+
+    .leader-row:last-child {
+      border-bottom: none;
+      border-radius: 0 0 10px 10px
+    }
+
+    .leader-row:hover {
+      background: var(--bg3)
+    }
+
+    .leader-rank {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--muted);
+      letter-spacing: 1px
+    }
+
+    .leader-rank.gold {
+      color: var(--accent);
+    }
+
+    .leader-rank.silver {
+      color: var(--accent2);
+    }
+
+    .leader-rank.bronze {
+      color: var(--pink);
+    }
+
+    .leader-rank.fourth {
+      color: var(--orange);
+    }
+
+    .leader-name {
+      font-weight: 700;
+      font-size: 15px
+    }
+
+    .leader-name small {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 2px
+    }
+
+    /* PROGRESS BAR SYSTEM */
+    .progress-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .progress-container {
+      height: 12px;
+      background: rgba(226, 232, 240, 0.05);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      gap: 2px;
+      padding: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+    }
+
+    .progress-segment {
+      flex: 1;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 2px;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .progress-segment.filled {
+      background: linear-gradient(90deg, #2EC4B6, #1D4ED8, #FF4D6D, #F97316);
+      background-size: 1000% 100%;
+      box-shadow: 0 0 15px rgba(46, 196, 182, 0.2);
+    }
+
+    .progress-info {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .leader-km {
+      text-align: right;
+      line-height: 1;
+    }
+
+    .km-current {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .km-divider {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.2);
+      margin: 0 4px;
+    }
+
+    .km-total {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .km-label {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    .month-filter {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+
+    .month-filter::-webkit-scrollbar {
+      display: none;
+    }
+
+    .month-btn {
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .month-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+
+    /* .progress-bar{background:var(--bg3);border-radius:4px;height:6px;overflow:hidden;width:100%}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;transition:width 1s ease} */
+
+    .leader-rank {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rank-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      background-clip: padding-box;
+    }
+
+    .badge-1 {
+      background: linear-gradient(135deg, #FFD700, #D4AF37);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    }
+
+    .badge-2 {
+      background: linear-gradient(135deg, #E2E2E2, #8E8E8E);
+      box-shadow: 0 0 15px rgba(192, 192, 192, 0.4);
+    }
+
+    .badge-3 {
+      background: linear-gradient(135deg, #CD7F32, #A0522D);
+      box-shadow: 0 0 15px rgba(205, 127, 50, 0.4);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start
+    }
+
+    .about-img-wrap {
+      position: relative
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      border-radius: 16px;
+      display: block
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--accent);
+      border-radius: 16px;
+      padding: 24px;
+      font-family: var(--font-display);
+      font-size: 40px;
+      line-height: 1;
+      color: #fff;
+      text-align: center
+    }
+
+    .about-img-badge small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-top: 4px
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px
+    }
+
+    .value-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px
+    }
+
+    .value-card .icon {
+      font-size: 28px;
+      margin-bottom: 10px
+    }
+
+    .value-card h4 {
+      font-weight: 700;
+      margin-bottom: 6px
+    }
+
+    .value-card p {
+      font-family: var(--font-read);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6
+    }
+
+    .cert-img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-top: 32px
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px
+    }
+
+    .testi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color .3s
+    }
+
+    .testi-card:hover {
+      border-color: rgba(34, 197, 94, .4)
+    }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 14px;
+      margin-bottom: 16px
+    }
+
+    .testi-text {
+      font-family: var(--font-read);
+      font-size: 14px;
+      color: rgba(240, 240, 240, .75);
+      line-height: 1.8;
+      margin-bottom: 20px
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 20px;
+      flex-shrink: 0
+    }
+
+    .testi-name {
+      font-weight: 700;
+      font-size: 14px
+    }
+
+    .testi-sub {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    /* TRAINING */
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px
+    }
+
+    .training-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all .3s;
+      position: relative;
+    }
+
+    .training-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .training-card:nth-child(1) {
+      border-left: 4px solid var(--accent);
+    }
+
+    .training-card:nth-child(2) {
+      border-left: 4px solid var(--accent2);
+    }
+
+    .training-card:nth-child(3) {
+      border-left: 4px solid var(--pink);
+    }
+
+    .training-card:nth-child(4) {
+      border-left: 4px solid var(--orange);
+    }
+
+    .training-card:nth-child(5) {
+      border-left: 4px solid var(--accent);
+    }
+
+    .training-card:nth-child(6) {
+      border-left: 4px solid var(--accent2);
+    }
+
+    .training-card .icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(34, 197, 94, .12);
+      border: 1px solid rgba(34, 197, 94, .25);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px
+    }
+
+    .training-card h3 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: 1px;
+      margin-bottom: 12px
+    }
+
+    .training-card p {
+      font-family: var(--font-read);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+      cursor: pointer
+    }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 15px
+    }
+
+    .faq-q span {
+      font-size: 20px;
+      color: var(--accent);
+      transition: transform .3s
+    }
+
+    .faq-item.open .faq-q span {
+      transform: rotate(45deg)
+    }
+
+    .faq-a {
+      font-family: var(--font-read);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .3s
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-top: 16px
+    }
+
+    /* JOIN */
+    .join-hero {
+      background: linear-gradient(135deg, var(--bg2), var(--bg3));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 80px 60px;
+      text-align: center;
+      margin: 0 60px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .join-hero::before {
+      content: '';
+      position: absolute;
+      inset: -80px;
+      background: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, .12) 0%, transparent 70%);
+      pointer-events: none
+    }
+
+    .join-hero h2 {
+      font-family: var(--font-display);
+      font-size: 64px;
+      letter-spacing: 4px;
+      margin-bottom: 16px
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 60px;
+      padding: 0 60px
+    }
+
+    .join-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px
+    }
+
+    .join-form h3 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      letter-spacing: 2px;
+      margin-bottom: 28px
+    }
+
+    .form-group {
+      margin-bottom: 20px
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      color: var(--text);
+      font-family: var(--font-read);
+      font-size: 14px;
+      outline: none;
+      transition: border-color .3s
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent)
+    }
+
+    .form-group select option {
+      background: var(--bg3)
+    }
+
+    .whatsapp-card {
+      background: linear-gradient(135deg, #128C7E, #25D366);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px
+    }
+
+    .whatsapp-card .wa-icon {
+      font-size: 64px
+    }
+
+    .whatsapp-card h3 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: #fff
+    }
+
+    .whatsapp-card p {
+      font-family: var(--font-read);
+      font-size: 14px;
+      color: rgba(255, 255, 255, .8);
+      line-height: 1.7;
+      max-width: 280px
+    }
+
+    .btn-whatsapp {
+      background: #fff;
+      color: #128C7E;
+      font-weight: 700
+    }
+
+    .btn-whatsapp:hover {
+      background: #f0f0f0;
+      transform: translateY(-3px)
+    }
+
+    /* RUNNER DASHBOARD SHARED STYLES */
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .admin-table th {
+      background: var(--bg3);
+      padding: 12px 16px;
+      text-align: left;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border)
+    }
+
+    .admin-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .status-pending {
+      background: rgba(249, 115, 22, 0.1);
+      color: var(--orange);
+    }
+
+    .status-verified {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--accent);
+    }
+
+    .status-approved {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--accent);
+    }
+
+    .status-rejected {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    .success-toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #1a1a1a;
+      border: 1px solid #4caf50;
+      color: #4caf50;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 3000;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all .4s;
+      max-width: 320px
+    }
+
+    .success-toast.show {
+      transform: translateY(0);
+      opacity: 1
+    }
+
+    .km-input {
+      width: 80px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: var(--text);
+      font-size: 13px;
+      text-align: center
+    }
+
+    .winner-badge {
+      background: linear-gradient(135deg, var(--gold), #ff9900);
+      color: #000;
+      font-weight: 700;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-left: 6px
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, .3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      vertical-align: middle
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px;
+      color: var(--muted);
+      font-family: var(--font-read);
+      font-size: 14px
+    }
+
+    .empty-state .icon {
+      font-size: 40px;
+      margin-bottom: 12px
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2);
+      border-top: 4px solid var(--accent);
+      border-image: linear-gradient(90deg, var(--accent), var(--accent2), var(--pink), var(--orange)) 1;
+      padding: 64px 60px 32px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr;
+      gap: 60px;
+      margin-bottom: 48px
+    }
+
+    .footer-brand .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px
+    }
+
+    .footer-brand .logo img {
+      height: 40px;
+      border-radius: 8px
+    }
+
+    .footer-brand .logo span {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 2px
+    }
+
+    .footer-brand p {
+      font-family: var(--font-read);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 280px
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px
+    }
+
+    .footer-col a {
+      display: block;
+      font-family: var(--font-read);
+      font-size: 14px;
+      color: rgba(240, 240, 240, .6);
+      text-decoration: none;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: color .3s
+    }
+
+    .footer-col a:hover {
+      color: var(--accent);
+      padding-left: 4px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: rgba(240, 240, 240, 0.7);
+      font-size: 14px;
+      font-family: var(--font-read);
+    }
+
+    .footer-contact-icon {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .footer-bottom p {
+      font-family: var(--font-read);
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .footer-bottom .wa-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      padding: 8px 20px;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .3s
+    }
+
+    .footer-bottom .wa-link:hover {
+      transform: translateY(-2px)
+    }
+
+    .pulse-ring {
+      animation: pulse-ring 2s ease-in-out infinite
+    }
+
+    @keyframes pulse-ring {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, .4)
+      }
+
+      70% {
+        box-shadow: 0 0 0 12px rgba(34, 197, 94, 0)
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* STATUS BADGE */
+    .status-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600
+    }
+
+    .status-pending {
+      background: rgba(255, 165, 0, .12);
+      color: #FFA500;
+      border: 1px solid rgba(255, 165, 0, .3)
+    }
+
+    .status-approved {
+      background: rgba(0, 255, 100, .08);
+      color: #4caf50;
+      border: 1px solid rgba(0, 255, 100, .25)
+    }
+
+    .status-whatsapp {
+      background: rgba(37, 211, 102, .1);
+      color: #25D366;
+      border: 1px solid rgba(37, 211, 102, .3)
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      .stats-band {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .community-head {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+        margin: 0 auto 60px
+      }
+
+      .community-head::before {
+        display: none
+      }
+
+      .training-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .join-grid {
+        grid-template-columns: 1fr
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:768px) {
+      nav {
+        padding: 14px 20px
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .nav-hamburger {
+        display: flex
+      }
+
+      section {
+        padding: 70px 20px
+      }
+
+      .hero-content {
+        padding: 120px 24px 60px
+      }
+
+      .hero-stats {
+        bottom: 24px;
+        right: 20px;
+        left: 20px;
+        gap: 12px;
+        padding: 16px;
+        justify-content: space-around;
+      }
+
+      .hero-stat-num {
+        font-size: 32px
+      }
+
+      .stats-band {
+        grid-template-columns: 1fr 1fr;
+        padding: 40px 24px
+      }
+
+      .services-grid,
+      .training-grid {
+        grid-template-columns: 1fr
+      }
+
+      .gallery-grid {
+        columns: 2
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr
+      }
+
+      .leader-header,
+      .leader-row {
+        grid-template-columns: 40px 1fr 80px 60px
+      }
+
+      .leader-header :nth-child(5),
+      .leader-row :nth-child(5) {
+        display: none
+      }
+
+      .join-hero {
+        margin: 0 16px;
+        padding: 48px 24px
+      }
+
+      .join-hero h2 {
+        font-size: 40px
+      }
+
+      .join-grid {
+        padding: 0 16px
+      }
+
+      .community-head {
+        margin: 0 16px 60px;
+        padding: 32px 24px
+      }
+
+      footer {
+        padding: 48px 20px 24px
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center
+      }
+
+      .admin-panel {
+        padding: 80px 16px 40px
+      }
+
+      .form-grid-2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:480px) {
+      .hero h1 {
+        font-size: 48px
+      }
+
+      .gallery-grid {
+        columns: 1
+      }
+
+      .about-img-badge {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a class="nav-logo" onclick="navigate('home')">
+      <img
+        src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/mnl4qXJMPGCpGwE7/1st-time-runners-logo-AzGM3vGWe6hWyqDg.jpg"
+        alt="Logo" />
+      <span class="nav-logo-text">1ST TIME RUNNERS</span>
+    </a>
+    <div class="nav-links">
+      <a onclick="navigate('home')" data-page="home">Home</a>
+      <a onclick="navigate('events')" data-page="events">Events</a>
+      <a onclick="navigate('about')" data-page="about">About</a>
+      <a onclick="navigate('training')" data-page="training">Training</a>
+      <a onclick="navigate('runners')" data-page="runners">Runners</a>
+      <a onclick="navigate('join')" data-page="join" class="nav-join">Join Us</a>
+
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="mobile-close" onclick="toggleMenu()">✕</span>
+    <a onclick="navigate('home');toggleMenu()">HOME</a>
+    <a onclick="navigate('events');toggleMenu()">EVENTS</a>
+    <a onclick="navigate('about');toggleMenu()">ABOUT</a>
+    <a onclick="navigate('training');toggleMenu()">TRAINING</a>
+    <a onclick="navigate('runners');toggleMenu()">RUNNERS</a>
+    <a onclick="navigate('dashboard');toggleMenu()">DASHBOARD</a>
+    <a onclick="navigate('join');toggleMenu()">JOIN US</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">✕</span>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- TOAST -->
+  <div class="success-toast" id="toast"></div>
+
+  <!-- ═══ PAGE: HOME ═══ -->
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-tag">🏃 Whitefield, Bengaluru</div>
+        <h1>Run Your <em>First Mile</em> With Us</h1>
+        <p class="hero-quote">"Your body can stand almost anything. It's your mind you have to convince."</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary pulse-ring" onclick="navigate('join')">🏃 Join the Run</a>
+          <a class="btn btn-outline" onclick="navigate('dashboard')">📊 Dashboard</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num" id="home-stat-members">—</div>
+          <div class="hero-stat-lbl">Members</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">125+</div>
+          <div class="hero-stat-lbl">Started</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">8+</div>
+          <div class="hero-stat-lbl">Yrs Exp.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>RUN YOUR FIRST MILE</span><span class="dot">●</span><span>CUBBON PARK RUNS</span><span
+          class="dot">●</span><span>KADUGUDI TREE PARK</span><span class="dot">●</span><span>500 RUNNERS EVERY
+          YEAR</span><span class="dot">●</span><span>WHITEFIELD BENGALURU</span><span class="dot">●</span><span>JOIN THE
+          COMMUNITY</span><span class="dot">●</span>
+        <span>RUN YOUR FIRST MILE</span><span class="dot">●</span><span>CUBBON PARK RUNS</span><span
+          class="dot">●</span><span>KADUGUDI TREE PARK</span><span class="dot">●</span><span>500 RUNNERS EVERY
+          YEAR</span><span class="dot">●</span><span>WHITEFIELD BENGALURU</span><span class="dot">●</span><span>JOIN THE
+          COMMUNITY</span><span class="dot">●</span>
+      </div>
+    </div>
+
+    <div class="stats-band" id="stats-band">
+      <div class="stat-item">
+        <div class="num" id="stat-runners">—</div>
+        <div class="lbl">Club Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">125+</div>
+        <div class="lbl">Runners Started</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">500</div>
+        <div class="lbl">Annual Target</div>
+      </div>
+      <div class="stat-item">
+        <div class="num" id="stat-km">—</div>
+        <div class="lbl">Total KMs Run</div>
+      </div>
+    </div>
+
+    <!-- Community Head -->
+    <div class="community-head fade-up">
+      <div class="ch-img">
+        <img
+          src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=791,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.08.08-1-Yg24qBOZpRFQzgo2.jpeg"
+          alt="Karthick AR" />
+        <div class="ch-badge">
+          <div class="ch-badge-title">Community Head</div>
+          <div class="ch-badge-name">Karthick AR</div>
+        </div>
+      </div>
+      <div class="ch-info">
+        <div class="role">🏆 Ultra Runner · Founder</div>
+        <h2>KARTHICK AR</h2>
+        <div class="years">8+ Years of Endurance Running</div>
+        <p>Ultra runner with over 8 years of experience, dedicated to endurance training, fitness, and mentoring
+          aspiring runners. Passionate about guiding individuals through structured running programs and promoting a
+          healthy, active lifestyle.</p>
+        <div class="ch-eco">🌱 For every 10 km I run, I plant a tree for this Mother Earth</div>
+        <br />
+        <a class="btn btn-primary btn-sm" onclick="navigate('about')">Read Full Story →</a>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section>
+      <div class="section-label">What We Offer</div>
+      <div class="section-title">Running<br />Services</div>
+      <div class="section-sub">From Cubbon Park monthly runs to daily group sessions at Kadugudi Tree Park.</div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=538,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.08.09-Yan0qevJbrs33loJ.jpeg"
+            alt="Cubbon Park" />
+          <div class="service-card-body">
+            <h3>Cubbon Park Runs</h3>
+            <p>Join our monthly run at Cubbon Park, Sree Kanteerva Stadium. The perfect place to start your journey.</p>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <img src="https://images.unsplash.com/photo-1683825093981-9d45c106d3f0?auto=format&fit=crop&w=485&h=320"
+            alt="Group Run" />
+          <div class="service-card-body">
+            <h3>Kadugudi Tree Park</h3>
+            <p>Daily group runs in nature. Stay motivated, meet fellow runners, and improve endurance together.</p>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=538,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.08.08-2-mk34qNQJ24ik9xje.jpeg"
+            alt="Events" />
+          <div class="service-card-body">
+            <h3>Race Events</h3>
+            <p>We guide members to city marathons and events across Bengaluru with expert prep and race-day support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section style="padding-top:0">
+      <div class="section-label">Our Community</div>
+      <div class="section-title">Gallery</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"
+          onclick="openLightbox('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=565,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.33.00-YX4jaONa6JcgRJ7Z.jpeg')">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=565,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.33.00-YX4jaONa6JcgRJ7Z.jpeg"
+            alt="" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item"
+          onclick="openLightbox('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=541,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.32.59-Awv8DeGDBEU2oJXD.jpeg')">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=541,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.32.59-Awv8DeGDBEU2oJXD.jpeg"
+            alt="" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item"
+          onclick="openLightbox('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=485,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.32.55-mP432Go2kxs2Ra2n.jpeg')">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=485,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.32.55-mP432Go2kxs2Ra2n.jpeg"
+            alt="" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item"
+          onclick="openLightbox('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=405,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.33.17-Y4LPxbaxQ9hn5eG1.jpeg')">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=405,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.33.17-Y4LPxbaxQ9hn5eG1.jpeg"
+            alt="" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item"
+          onclick="openLightbox('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=405,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.32.51-Yle4qXZqKKSVWGpq.jpeg')">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=405,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.32.51-Yle4qXZqKKSVWGpq.jpeg"
+            alt="" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item"
+          onclick="openLightbox('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=715,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.08.08-2-mk34qNQJ24ik9xje.jpeg')">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=715,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.08.08-2-mk34qNQJ24ik9xje.jpeg"
+            alt="" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item"
+          onclick="openLightbox('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,h=386,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.07.34-mp84qB2JXVforDgX.jpeg')">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,h=386,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.07.34-mp84qB2JXVforDgX.jpeg"
+            alt="" loading="lazy" style="height:180px;object-fit:cover;width:100%" />
+          <div class="overlay"></div>
+        </div>
+        <div class="gallery-item"
+          onclick="openLightbox('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=405,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.32.53-1-dOqZ8w28JLTOpllV.jpeg')">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=405,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.32.53-1-dOqZ8w28JLTOpllV.jpeg"
+            alt="" loading="lazy" />
+          <div class="overlay"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding:0 60px 100px">
+      <div
+        style="background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 33%, var(--pink) 66%, var(--orange) 100%);border-radius:24px;padding:60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px">
+        <div>
+          <div style="font-family:var(--font-display);font-size:48px;letter-spacing:3px;color:#fff;line-height:1">READY
+            TO START?</div>
+          <div style="font-family:var(--font-read);color:rgba(255,255,255,.8);font-size:16px;margin-top:8px">Your first
+            step is just one click away.</div>
+        </div>
+        <a class="btn" style="background:#fff;color:var(--accent);flex-shrink:0"
+          href="https://chat.whatsapp.com/ETjBBV5CGF2J6EnDnBEDC3" target="_blank">📱 Join WhatsApp Now</a>
+      </div>
+    </section>
+    <div id="footer-home"></div>
+  </div>
+
+  <!-- ═══ PAGE: EVENTS ═══ -->
+  <div class="page" id="page-events">
+    <section style="padding-top:140px">
+      <div class="section-label">What's Coming</div>
+      <div class="section-title">Upcoming Events</div>
+      <div class="section-sub">Races and community runs across Bengaluru. Register early — spots fill fast!</div>
+      <div class="event-filter" style="margin-top:32px">
+        <button class="filter-btn active" onclick="filterEvents('all',this)">All Events</button>
+
+      </div>
+      <div id="events-grid" class="events-grid">
+        <div class="empty-state">
+          <div class="spinner"></div>
+          <p style="margin-top:16px">Loading events...</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-events"></div>
+  </div>
+
+  <!-- ═══ PAGE: ABOUT ═══ -->
+  <div class="page" id="page-about">
+    <section style="padding-top:140px">
+      <div class="section-label">Our Story</div>
+      <div class="section-title">About 1st Time Runners</div>
+      <div class="about-grid" style="margin-top:60px">
+        <div>
+          <div class="about-img-wrap">
+            <img src="https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?auto=format&fit=crop&w=612&h=464"
+              alt="Runners" />
+            <div class="about-img-badge">6<small>Months</small></div>
+          </div>
+          <img class="cert-img"
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=544,fit=crop/mnl4qXJMPGCpGwE7/black-gold-and-white-modern-participation-certificate-1-m5K8LOZnWDHy0pl8.jpg"
+            alt="Certificate" />
+        </div>
+        <div>
+          <div class="about-values" style="margin-top:0;margin-bottom:32px">
+            <div class="value-card">
+              <div class="icon">🎯</div>
+              <h4>Our Mission</h4>
+              <p>Train 500 individuals every year to embrace running and improve their wellbeing.</p>
+            </div>
+            <div class="value-card">
+              <div class="icon">🌱</div>
+              <h4>Eco Pledge</h4>
+              <p>For every 10 km run by our founder, one tree is planted for Mother Earth.</p>
+            </div>
+            <div class="value-card">
+              <div class="icon">🤝</div>
+              <h4>Community</h4>
+              <p>A supportive, inclusive running family where everyone belongs — zero to ultra.</p>
+            </div>
+            <div class="value-card">
+              <div class="icon">🏅</div>
+              <h4>Achievement</h4>
+              <p>100+ runners trained in 6 months. Annual prizes for top performers.</p>
+            </div>
+          </div>
+          <p
+            style="font-family:var(--font-read);font-size:16px;color:rgba(240,240,240,.75);line-height:1.9;margin-bottom:24px">
+            1st Time Runners is a Bengaluru-based running club dedicated to helping beginners lace up and take their
+            first step. Founded by ultra runner Karthick AR, we provide structured training, community support, and race
+            preparation — all with zero judgment.</p>
+          <p
+            style="font-family:var(--font-read);font-size:16px;color:rgba(240,240,240,.75);line-height:1.9;margin-bottom:32px">
+            We run at Cubbon Park, Kadugudi Tree Park, and at major events across the city. In just 6 months, we've
+            trained over 100 runners. Our year-end prize rewards the most consistent runners.</p>
+          <a class="btn btn-primary" href="https://chat.whatsapp.com/ETjBBV5CGF2J6EnDnBEDC3" target="_blank">📱 Join Our
+            Community</a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-label">The Man Behind The Mission</div>
+      <div class="section-title">About Our Founder</div>
+      <div style="max-width:900px;margin:48px 0 0">
+        <div style="display:flex;gap:48px;flex-wrap:wrap;align-items:center">
+          <img
+            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=791,fit=crop/mnl4qXJMPGCpGwE7/whatsapp-image-2025-09-29-at-22.08.08-1-Yg24qBOZpRFQzgo2.jpeg"
+            style="width:260px;border-radius:16px;border:3px solid var(--accent);flex-shrink:0;object-fit:cover"
+            alt="Karthick AR" />
+          <div>
+            <div style="font-family:var(--font-display);font-size:42px;letter-spacing:3px;margin-bottom:4px">KARTHICK AR
+            </div>
+            <div
+              style="color:var(--accent);font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px">
+              Ultra Runner · Coach · Founder</div>
+            <p
+              style="font-family:var(--font-read);font-size:16px;color:rgba(240,240,240,.75);line-height:1.9;margin-bottom:16px">
+              Karthick is an Ultra Runner with over 8 years of endurance running experience. His passion lies in
+              mentoring aspiring runners and building a healthy, active community.</p>
+            <p
+              style="font-family:var(--font-read);font-size:16px;color:rgba(240,240,240,.75);line-height:1.9;margin-bottom:24px">
+              Beyond running, Karthick is deeply committed to the environment — pledging to plant a tree for every 10 km
+              he runs, turning every stride into a gift to nature.</p>
+            <div class="ch-eco">🌱 "For every 10 kms I run, I plant a tree for this Mother Earth"</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="padding-top:0">
+      <div class="section-label">What Members Say</div>
+      <div class="section-title">Testimonials</div>
+      <div class="testimonials">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Joining 1st Time Runners transformed my life. The supportive community and expert
+            guidance helped me embrace running and achieve my fitness goals."</div>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Rajkumar</div>
+              <div class="testi-sub">Member since Feb 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"I never thought I could run. After 3 months with this club, I finished my first 5K!
+            Karthick Sir is an amazing coach and motivator."</div>
+          <div class="testi-author">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">Priya S</div>
+              <div class="testi-sub">5K Finisher</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"The group runs are what keep me going. The energy, the encouragement, the friendships
+            made — this club is pure gold."</div>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Arun K</div>
+              <div class="testi-sub">Intermediate Runner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="footer-about"></div>
+  </div>
+
+  <!-- ═══ PAGE: TRAINING ═══ -->
+  <div class="page" id="page-training">
+    <section style="padding-top:140px">
+      <div class="section-label">Get Stronger</div>
+      <div class="section-title">Training Programs</div>
+      <div class="section-sub">Tailored programs for every level — beginner to advanced.</div>
+      <div class="training-grid">
+        <div class="training-card">
+          <div class="icon">🌱</div>
+          <h3>Beginner Training</h3>
+          <p>Personalized coaching for new runners. Build confidence, correct form, and develop endurance from ground
+            zero. Start with walk-run intervals.</p>
+        </div>
+        <div class="training-card">
+          <div class="icon">👥</div>
+          <h3>Group Sessions</h3>
+          <p>Weekly group workouts at Cubbon Park and Kadugudi Tree Park. Foster motivation, camaraderie, and
+            accountability.</p>
+        </div>
+        <div class="training-card">
+          <div class="icon">🍎</div>
+          <h3>Nutrition Guidance</h3>
+          <p>Simple, practical nutrition tips for runners. Learn when to fuel, what to eat before and after runs, and
+            how to stay hydrated.</p>
+        </div>
+        <div class="training-card">
+          <div class="icon">🏆</div>
+          <h3>Race Preparation</h3>
+          <p>Structured training plans for 5K, 10K, Half and Full Marathons. Tapering, race-day routines, and mental
+            prep included.</p>
+        </div>
+        <div class="training-card">
+          <div class="icon">📊</div>
+          <h3>Progress Tracking</h3>
+          <p>Track your weekly kilometres on our leaderboard. Stay motivated and compete for the annual year-end prize.
+          </p>
+        </div>
+        <div class="training-card">
+          <div class="icon">🧠</div>
+          <h3>Mental Strength</h3>
+          <p>Running is 90% mental. We help you build the mindset to push past walls, embrace discomfort, and celebrate
+            every PB.</p>
+        </div>
+      </div>
+      <div style="margin-top:80px">
+        <div class="section-label">Running Basics</div>
+        <div class="section-title" style="margin-bottom:40px">FAQ</div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">What is 1st Time Runners? <span>+</span></div>
+          <div class="faq-a">1st Time Runners is a running club helping beginners start their running journey in life,
+            founded in Bengaluru by ultra runner Karthick AR.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Who can join the club? <span>+</span></div>
+          <div class="faq-a">Anyone interested in starting to run, regardless of fitness level, age, or background. All
+            are welcome — complete beginners to returning runners.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">How many people do you train? <span>+</span></div>
+          <div class="faq-a">Our mission is to train 500 individuals per year. In our first 6 months alone, we trained
+            100+ runners and helped 125+ people start their journey.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">What is the training schedule? <span>+</span></div>
+          <div class="faq-a">Training sessions are held weekly. We have morning sessions at Cubbon Park and Kadugudi
+            Tree Park. Check our Events page for specific dates.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Do I need special gear? <span>+</span></div>
+          <div class="faq-a">Basic running shoes and comfortable clothing are recommended. No fancy equipment needed —
+            just the will to start!</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">What is the year-end prize? <span>+</span></div>
+          <div class="faq-a">We track KMs run by each member throughout the year. At year-end, top performers are
+            recognised and awarded prizes. Track your KMs on the Runners page!</div>
+        </div>
+      </div>
+    </section>
+    <div id="footer-training"></div>
+  </div>
+
+  <!-- ═══ PAGE: RUNNERS ═══ -->
+  <div class="page" id="page-runners">
+    <section style="padding-top:140px">
+
+      <div class="section-label">Annual KM Challenge</div>
+      <div class="section-title">Runner Leaderboard</div>
+      <div class="section-sub">
+        Every kilometre counts. Top runners at year-end win special prizes. Keep pushing!
+      </div>
+
+      <div
+        style="background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px 32px;margin-top:40px;max-width:600px">
+
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+          <!-- <span style="font-weight:600;font-size:30px">   2026</span>
+        <span id="year-percent" style="color:var(--accent);font-weight:700;font-size:30px"> - BUILT BY DISCIPLINE</span> -->
+          <span style="font-weight:600;font-size:30px">
+            2026 • BUILT BY DISCIPLINE
+          </span>
+        </div>
+
+        <!-- <div class="progress-bar">
+        <div class="progress-fill" id="year-bar" style="width:0%"></div>
+      </div>
+
+      <div style="margin-top:12px;font-size:13px;color:var(--muted)">
+        <div id="total-km">Total KM: —</div>
+        <div id="total-runners">Total Runners: —</div>
+      </div> -->
+
+      </div>
+
+      <!-- 🏆 CARDS -->
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin:32px 0">
+
+        <div
+          style="background:linear-gradient(135deg,rgba(255,215,0,.12),rgba(255,153,0,.06));border:1px solid rgba(255,215,0,.3);border-radius:12px;padding:20px 28px;flex:1;min-width:180px">
+          <div style="font-size:28px">🥇</div>
+          <div style="font-family:var(--font-display);font-size:20px;color:var(--gold);letter-spacing:2px">1st Place
+          </div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px">Most KMs Run </div>
+        </div>
+
+        <div
+          style="background:rgba(192,192,192,.06);border:1px solid rgba(192,192,192,.2);border-radius:12px;padding:20px 28px;flex:1;min-width:180px">
+          <div style="font-size:28px">🥈</div>
+          <div style="font-family:var(--font-display);font-size:20px;color:#C0C0C0;letter-spacing:2px">2nd Place</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px">2nd Most KMs Run</div>
+        </div>
+
+        <div
+          style="background:rgba(205,127,50,.06);border:1px solid rgba(205,127,50,.2);border-radius:12px;padding:20px 28px;flex:1;min-width:180px">
+          <div style="font-size:28px">🥉</div>
+          <div style="font-family:var(--font-display);font-size:20px;color:#CD7F32;letter-spacing:2px">3rd Place</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px">3rd Most KMs Run</div>
+        </div>
+
+        <div
+          style="background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:20px 28px;flex:1;min-width:180px">
+          <div style="font-size:28px">🌟</div>
+          <div style="font-family:var(--font-display);font-size:20px;color:var(--accent);letter-spacing:2px">Most
+            Consistent</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:4px">Most Events Participated</div>
+        </div>
+
+      </div>
+
+      <section id="leaderboard-section">
+        <div class="section-label">Top Performers</div>
+        <div class="section-title">The Leaderboard</div>
+        <div class="section-sub">Tracking progress toward our 2026 KM Goal.</div>
+
+        <!-- Month Filter -->
+        <div id="month-filter" class="month-filter" style="margin-top:40px">
+          <!-- JS Inserted -->
+        </div>
+
+        <div class="leader-header">
+          <div>Rank</div>
+          <div>Runner</div>
+          <div>Monthly Progress</div>
+          <div style="text-align:right">Total KM</div>
+        </div>
+
+        <div id="leaderboard-body">
+          <div class="empty-state">
+            <div class="spinner"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;text-align:center;color:var(--muted);font-size:13px">
+          KM data updated by admin.
+          <span style="color:var(--accent);cursor:pointer" onclick="navigate('join')">
+            Register to get on the board →
+          </span>
+        </div>
+
+      </section>
+  </div>
+  <!-- ═══ PAGE: JOIN ═══ -->
+  <div class="page" id="page-join">
+    <div style="padding-top:120px;padding-bottom:40px">
+      <div class="join-hero">
+        <div class="hero-tag" style="display:inline-flex;margin-bottom:24px">🏃 Free to Join</div>
+        <h2>JOIN THE<br />COMMUNITY</h2>
+        <p
+          style="font-family:var(--font-read);color:rgba(240,240,240,.7);font-size:16px;max-width:480px;margin:0 auto;line-height:1.7">
+          Become part of Bengaluru's most energetic running community. Zero cost, maximum miles.</p>
+      </div>
+    </div>
+    <div class="join-grid">
+      <div class="join-form">
+        <h3>Register as a Runner</h3>
+        <div class="form-group"><label>Full Name *</label><input type="text" id="join-name"
+            placeholder="Your full name" /></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" id="join-phone"
+            placeholder="+91 XXXXX XXXXX" /></div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="join-email"
+            placeholder="your@email.com" /></div>
+        <div class="form-group"><label>Running Level</label>
+          <select id="join-level">
+            <option>Complete Beginner</option>
+            <option>Some Experience</option>
+            <option>Intermediate Runner</option>
+            <option>Advanced Runner</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Set Password/PIN *</label>
+          <input type="password" id="join-password" placeholder="Create a secure PIN" />
+        </div>
+        <div class="form-group">
+          <label>How did you hear about us?</label>
+          <select id="join-source">
+            <option>WhatsApp Group</option>
+            <option>Instagram</option>
+            <option>Friend/Family</option>
+            <option>Race Event</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitJoin()">🎽 Register
+          Now</button>
+      </div>
+      <div class="whatsapp-card">
+        <div class="wa-icon">💬</div>
+        <h3>WhatsApp Community</h3>
+        <p>Join our active WhatsApp group for run schedules, event updates, motivation, and connecting with fellow
+          runners.</p>
+        <a class="btn btn-whatsapp" href="https://chat.whatsapp.com/ETjBBV5CGF2J6EnDnBEDC3"
+          target="_blank"><span>📱</span> Join WhatsApp Group</a>
+        <div
+          style="margin-top:16px;background:rgba(255,255,255,.15);border-radius:12px;padding:16px;text-align:left;width:100%">
+          <div style="font-size:12px;color:rgba(255,255,255,.9);line-height:1.8">✅ Run schedules & updates<br />✅ Event
+            registration links<br />✅ Motivation & tips<br />✅ KM tracking & leaderboard<br />✅ Photo sharing from runs
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:60px 60px 0;text-align:center">
+      <div style="font-family:var(--font-display);font-size:36px;letter-spacing:3px;margin-bottom:16px">EVERY JOURNEY
+        STARTS WITH<br /><span style="color:var(--accent)">ONE STEP</span></div>
+    </div>
+    <div id="footer-join"></div>
+  </div>
+
+  <!-- ═══ PAGE: DASHBOARD ═══ -->
+  <div class="page" id="page-dashboard">
+    <section style="padding-top:140px">
+      <div id="runner-login-sec">
+        <div class="section-label">Member Access</div>
+        <div class="section-title">Runner Dashboard</div>
+        <div
+          style="max-width:400px;margin:40px auto;background:var(--card);padding:40px;border-radius:20px;border:1px solid var(--border)">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="dash-phone" placeholder="+91 XXXXX XXXXX" />
+          </div>
+          <div class="form-group">
+            <label>PIN / Password</label>
+            <input type="password" id="dash-pass" placeholder="Enter your secret PIN" />
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="runnerLogin()">Login to Dashboard</button>
+          <p style="margin-top:20px;font-size:12px;color:var(--muted);text-align:center">Not approved yet? <a
+              style="color:var(--accent);cursor:pointer" onclick="navigate('join')">Join the run here</a></p>
+        </div>
+      </div>
+
+      <div id="runner-profile-sec" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px">
+          <div>
+            <div class="section-label" id="dash-level">Level: Beginner</div>
+            <div class="section-title" id="dash-name">Welcome Back</div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="runnerLogout()">Logout</button>
+        </div>
+
+        <div class="dashboard-grid">
+          <div>
+            <div class="card" style="margin-bottom:40px">
+              <h3 style="margin-bottom:20px;font-family:var(--font-display);font-size:22px">Your Journey</h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                <div style="background:var(--bg3);padding:20px;border-radius:12px">
+                  <div style="font-size:12px;color:var(--muted);margin-bottom:4px">Verified KMs</div>
+                  <div style="font-size:32px;font-family:var(--font-display);color:var(--accent)" id="dash-km">0</div>
+                </div>
+                <div style="background:var(--bg3);padding:20px;border-radius:12px">
+                  <div style="font-size:12px;color:var(--muted);margin-bottom:4px">Global Rank</div>
+                  <div style="font-size:32px;font-family:var(--font-display);color:var(--accent2)" id="dash-rank">--
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom:20px;font-family:var(--font-display);font-size:22px">Run Verification History
+              </h3>
+              <div style="overflow-x:auto">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>KM</th>
+                      <th>Status</th>
+                      <th>Note</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dash-history"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="height:fit-content">
+            <h3 style="margin-bottom:20px;font-family:var(--font-display);font-size:22px">Submit Run Proof</h3>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:24px">Upload a screenshot from Strava, Garmin, or
+              your fitness tracker. Admin will verify it.</p>
+            <div class="form-group">
+              <label>Kilometres Added</label>
+              <input type="number" id="sub-km" step="0.1" placeholder="Distance in KM" />
+            </div>
+            <div class="form-group">
+              <label>Note / Activity Name</label>
+              <input type="text" id="sub-note" placeholder="Morning Cubbon Run" />
+            </div>
+            <div class="form-group">
+              <label>Upload Strava Screenshot</label>
+              <input type="file" id="sub-proof" accept="image/*" style="padding-top:10px" />
+            </div>
+            <button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="submitKm()">Submit for
+              Verification</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="footer-dashboard"></div>
+  </div>
+
+  <!-- SHARED FOOTER TEMPLATE -->
+  <template id="footer-tpl">
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><img
+              src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop,q=95/mnl4qXJMPGCpGwE7/1st-time-runners-logo-AzGM3vGWe6hWyqDg.jpg"
+              alt="Logo" /><span>1ST TIME RUNNERS</span></div>
+          <p>Inspiring and training 500 new runners every year in Bengaluru. Your first mile starts here.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4><a onclick="navigate('home')">Home</a><a onclick="navigate('events')">Events</a><a
+            onclick="navigate('dashboard')">Dashboard</a><a onclick="navigate('about')">About</a><a
+            onclick="navigate('training')">Training</a><a onclick="navigate('runners')">Runners</a><a
+            onclick="navigate('join')">Join Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect with Us</h4>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📍</span>
+            <span>Whitefield, Bengaluru</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📱</span>
+            <span>+91 97415 54092</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">🕒</span>
+            <span>Every Morning @ 5:30 AM</span>
+          </div>
+          <div style="margin-top: 20px; display: flex; gap: 15px;">
+            <a href="#"
+              style="background: rgba(255,255,255,0.05); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 14px; text-decoration: none; color: #fff;">YT</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 1st Time Runners · Bengaluru · Founded by Karthick AR</p>
+        <a class="wa-link" href="https://chat.whatsapp.com/ETjBBV5CGF2J6EnDnBEDC3" target="_blank"><span>💬</span> Join
+          WhatsApp</a>
+      </div>
+    </footer>
+  </template>
+
+  <script>
+    // ─── API HELPERS ──────────────────────────────────────────────────────
+    async function api(path, method = 'GET', body = null) {
+      const opts = { method, headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin' };
+      if (body) opts.body = JSON.stringify(body);
+      try {
+        const res = await fetch('api' + path, opts);
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Server error');
+        return data;
+      } catch (err) {
+        console.error('API Error:', err);
+        if (typeof showToast === 'function') showToast('Error: ' + err.message, '#ef4444');
+        return null;
+      }
+    }
+
+    // ─── NAVIGATION ───────────────────────────────────────────────────────
+    async function navigate(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + page);
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (page === 'home') await loadHomeStats();
+      if (page === 'events') await renderEvents();
+      if (page === 'runners') await renderLeaderboard();
+      if (page === 'dashboard') await checkRunnerStatus();
+
+      setupFadeUp();
+    }
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+    window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60));
+
+    // ─── RUNNER DASHBOARD ──────────────────────────────────────────────────
+    let currentUser = null;
+
+    async function checkRunnerStatus() {
+      const res = await api('/runner/status');
+      if (res.logged_in) {
+        currentUser = res.runner;
+        document.getElementById('runner-login-sec').style.display = 'none';
+        document.getElementById('runner-profile-sec').style.display = 'block';
+        await renderDashboard();
+      } else {
+        document.getElementById('runner-login-sec').style.display = 'block';
+        document.getElementById('runner-profile-sec').style.display = 'none';
+      }
+    }
+
+    async function runnerLogin() {
+      const phone = document.getElementById('dash-phone').value.trim();
+      const password = document.getElementById('dash-pass').value.trim();
+      if (!phone || !password) return showToast('Enter your credentials', '#e53e3e');
+
+      try {
+        const res = await api('/runner/login', 'POST', { phone, password });
+        if (res.success) {
+          showToast('Welcome back, ' + res.runner.name + '!');
+          await checkRunnerStatus();
+        } else {
+          showToast(res.error, '#e53e3e');
+        }
+      } catch (e) { showToast('Login failed', '#e53e3e'); }
+    }
+
+    async function runnerLogout() {
+      await api('/runner/logout', 'POST');
+      currentUser = null;
+      await checkRunnerStatus();
+      showToast('Logged out safely');
+    }
+
+    async function renderDashboard() {
+      if (!currentUser) return;
+      document.getElementById('dash-name').textContent = 'Welcome, ' + currentUser.name;
+      document.getElementById('dash-level').textContent = 'Level: ' + currentUser.level;
+      document.getElementById('dash-km').textContent = Math.round(currentUser.km || 0);
+
+      // Find Rank
+      if (!allRunners.length) allRunners = await api('/runners');
+      const rank = allRunners.findIndex(r => r.id === currentUser.id) + 1;
+      document.getElementById('dash-rank').textContent = rank > 0 ? '#' + rank : '--';
+
+      // Load History
+      const history = await api('/runners/' + currentUser.id + '/km/log');
+      const tbody = document.getElementById('dash-history');
+      tbody.innerHTML = history.length ? history.map(h => `
+            <tr>
+                <td>${h.log_date}</td>
+                <td style="color:var(--accent);font-weight:700">+${h.km_added}</td>
+                <td><span class="status-badge status-${h.status.toLowerCase()}">${h.status}</span></td>
+                <td style="font-size:12px;color:var(--muted)">${h.note || 'Regular Run'}</td>
+            </tr>
+        `).join('') : '<tr><td colspan="4" class="empty-state">No submissions yet.</td></tr>';
+    }
+
+    async function submitKm() {
+      const km = document.getElementById('sub-km').value;
+      const note = document.getElementById('sub-note').value;
+      const fileInput = document.getElementById('sub-proof');
+
+      if (!km || parseFloat(km) <= 0) return showToast('Enter a valid KM amount', '#e53e3e');
+      if (!fileInput.files[0]) return showToast('Please upload a proof screenshot!', '#e53e3e');
+
+      const formData = new FormData();
+      formData.append('km', km);
+      formData.append('note', note);
+      formData.append('proof', fileInput.files[0]);
+
+      showToast('Uploading your proof...', 'var(--accent2)');
+
+      try {
+        const res = await fetch('api/runner/submit-km', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('🎉 Submitted! Awaiting admin verification.');
+          document.getElementById('sub-km').value = '';
+          document.getElementById('sub-note').value = '';
+          fileInput.value = '';
+          await renderDashboard();
+        } else {
+          showToast(data.error, '#e53e3e');
+        }
+      } catch (e) { showToast('Submission failed', '#e53e3e'); }
+    }
+
+    // ─── FADE UP ──────────────────────────────────────────────────────────
+    function setupFadeUp() {
+      setTimeout(() => {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up:not(.visible)').forEach(el => obs.observe(el));
+      }, 100);
+    }
+
+    // ─── HOME STATS ───────────────────────────────────────────────────────
+    let allRunners = [];
+    let currentLeaderboardMonth = 'ALL';
+    const YEAR_GOAL = 2026;
+    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    async function loadHomeStats() {
+      try {
+        const s = await api('/stats');
+        const sr = document.getElementById('stat-runners');
+        const sk = document.getElementById('stat-km');
+        const hm = document.getElementById('home-stat-members');
+        if (sr) sr.textContent = s.total_runners + '+';
+        if (sk) sk.textContent = Math.round(s.total_km) + 'km';
+        if (hm) hm.textContent = s.total_runners + '+';
+      } catch (e) { }
+    }
+
+    // ─── EVENTS ───────────────────────────────────────────────────────────
+    let allEvents = [];
+    async function renderEvents(filter = 'all') {
+      const grid = document.getElementById('events-grid');
+      if (!grid) return;
+      if (!allEvents.length) {
+        grid.innerHTML = '<div class="spinner"></div>';
+        allEvents = await api('/events');
+      }
+
+      const today = new Date().toISOString().split('T')[0];
+      const filtered = filter === 'all' ? allEvents : allEvents.filter(e => (e.distances || '').includes(filter));
+
+      grid.innerHTML = filtered.map(e => {
+        const isPast = e.event_date < today;
+        const isOurEvent = (e.organizer || "").toLowerCase().includes("1st time runners");
+
+        return `
+          <div class="event-card fade-up ${isPast ? 'completed' : ''}">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+              <div class="ev-date">${e.event_date}</div>
+              <div class="tag ${isOurEvent ? 'tag-our' : 'tag-ext'}">
+                ${isOurEvent ? 'Our Event' : 'Partner Event'}
+              </div>
+            </div>
+            <h3>${e.name}</h3>
+            <div class="ev-venue">📍 ${e.venue}</div>
+            <div class="ev-dist">🏁 ${e.distances}</div>
+            <div class="ev-actions" style="margin-top:auto">
+              ${isPast ?
+            `<button class="btn btn-completed btn-sm" disabled>COMPLETED</button>` :
+            (e.reg_link ? `<a class="btn btn-primary btn-sm" href="${e.reg_link}" target="_blank">Register</a>` : '')
+          }
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ─── LEADERBOARD ──────────────────────────────────────────────────────
+    async function renderLeaderboard() {
+      const body = document.getElementById('leaderboard-body');
+      const filterBox = document.getElementById('month-filter');
+      if (filterBox && filterBox.innerHTML.trim() === '') {
+        filterBox.innerHTML = ['ALL', ...MONTHS].map(m => `<button class="month-btn" onclick="filterLeaderboard('${m}', this)">${m}</button>`).join('');
+      }
+      body.innerHTML = '<div class="spinner"></div>';
+      allRunners = await api('/runners');
+      if (!allRunners) {
+        body.innerHTML = '<div class="empty-state"><p>Unable to load runner data. Please check your database connection.</p></div>';
+        return;
+      }
+      let displayData = [...allRunners];
+      if (currentLeaderboardMonth !== 'ALL') {
+        const mIdx = MONTHS.indexOf(currentLeaderboardMonth);
+        displayData = displayData.filter(r => r.monthly_kms && r.monthly_kms[mIdx] > 0).sort((a, b) => b.monthly_kms[mIdx] - a.monthly_kms[mIdx]);
+      } else {
+        displayData.sort((a, b) => (b.km || 0) - (a.km || 0));
+      }
+      body.innerHTML = displayData.map((r, i) => {
+        const totalKm = r.km || 0;
+        const percent = Math.min(100, Math.round((totalKm / YEAR_GOAL) * 100));
+        const filledSegments = Math.floor((percent / 100) * 12);
+
+        let rankContent = i + 1;
+        if (i === 0) rankContent = '<div class="rank-badge badge-1">🥇</div>';
+        else if (i === 1) rankContent = '<div class="rank-badge badge-2">🥈</div>';
+        else if (i === 2) rankContent = '<div class="rank-badge badge-3">🥉</div>';
+
+        return `
+          <div class="leader-row fade-up">
+            <div class="leader-rank">${rankContent}</div>
+            <div class="leader-name">${r.name}<small>${r.level}</small></div>
+            <div class="progress-col">
+              <div class="progress-info">
+                <span>Progress</span>
+                <span style="color:var(--accent)">${percent}%</span>
+              </div>
+              <div class="progress-container">
+                ${Array.from({ length: 12 }).map((_, idx) => `<div class="progress-segment ${idx < filledSegments ? 'filled' : ''}"></div>`).join('')}
+              </div>
+            </div>
+            <div class="leader-km">
+              <span class="km-current">${Math.round(totalKm)}</span>
+              <span class="km-divider">/</span>
+              <span class="km-total">${YEAR_GOAL}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterLeaderboard(month, btn) {
+      currentLeaderboardMonth = month;
+      document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderLeaderboard();
+    }
+
+    // ─── JOIN ─────────────────────────────────────────────────────────────
+    async function submitJoin() {
+      const name = document.getElementById('join-name').value.trim();
+      const phone = document.getElementById('join-phone').value.trim();
+      const password = document.getElementById('join-password').value.trim();
+      if (!name || !phone || !password) { showToast('⚠️ Name, Phone and Password are required!', '#e53e3e'); return; }
+      const res = await api('/registrations', 'POST', {
+        name, phone, password,
+        email: document.getElementById('join-email').value,
+        level: document.getElementById('join-level').value,
+        source: document.getElementById('join-source').value
+      });
+      if (res.success) {
+        showToast('🎉 Registration submitted. Await admin approval.');
+        ['join-name', 'join-phone', 'join-password', 'join-email'].forEach(id => document.getElementById(id).value = '');
+      }
+    }
+
+    // ─── MISC ─────────────────────────────────────────────────────────────
+    function showToast(msg, color) {
+      const t = document.getElementById('toast');
+      if (!t) return;
+      t.textContent = msg; t.style.borderColor = color || 'var(--accent)';
+      t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    function toggleFaq(el) {
+      const wasOpen = el.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open'));
+      if (!wasOpen) el.classList.add('open');
+    }
+
+    function injectFooters() {
+      const tpl = document.getElementById('footer-tpl');
+      ['home', 'events', 'about', 'training', 'runners', 'join', 'dashboard'].forEach(p => {
+        const el = document.getElementById('footer-' + p);
+        if (el) el.appendChild(tpl.content.cloneNode(true));
+      });
+    }
+
+    // ─── INIT ─────────────────────────────────────────────────────────────
+    injectFooters();
+    navigate('home');
+  </script>
+</body>
+
+</html>

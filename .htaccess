@@ -1,19 +1,4 @@
-Options -Indexes
 RewriteEngine On
-RewriteBase /1st_time_runners/
-
-# ── Let real files and directories through ──────────────────
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-
-# ── /admin → admin.php ──────────────────────────────────────
-RewriteRule ^admin/?$ admin.php [L]
-
-# ── All /api/* requests → api/index.php ─────────────────────
-RewriteRule ^api/(.*)$ api/index.php [QSA,L]
-
-# ── Everything else → index.php (SPA root) ──────────────────
+RewriteBase /1st_time_runners/api/
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [L]
+RewriteRule ^ index.php [QSA,L]
